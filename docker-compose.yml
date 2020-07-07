@@ -1,0 +1,7 @@
+version: "3.6"
+services:
+  dnsever:
+    build: .
+    image: kennyhyun/dnsever
+    volumes:
+      - ~/.dnsever-ddns-updater/config.json:/root/.dnsever-ddns-updater/config.json
