@@ -65,7 +65,7 @@ program.on('--help', function() {
 program.command('show')
 .description('display all configure value')
 .action(function() {
-	config();
+	config().then(code => process.exitCode = code || 0);
 });
 
 program.command('clean')
@@ -203,6 +203,7 @@ function config() {
 		printCurrentConfig( public_ip );
 		printCurrentDDNSSetting( currentDDNSSettings );
 		printExceptionMap( core.getEnv('exceptionMap'));
+ 		return currentDDNSSettings ? currentDDNSSettings.errorCode || 0 : -1;
 	});
 }
 
@@ -290,10 +291,11 @@ function printExceptionMap( exceptionMap ) {
 
 if (process.argv.length == 2) {
 
-	config().then( function() {
+	config().then( function(code) {
 		console.log( '' );
 		console.log('  -h, --help     output usage information'.yellow );
 		console.log( '' );
+		process.exitCode = code || 0;
 	});
 }
 

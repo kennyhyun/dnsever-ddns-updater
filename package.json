@@ -14,6 +14,10 @@
     "bin": "./bin"
   },
   "scripts": {
+    "start": "bin/dnsever-ddns-updater show && docker-compose up -d",
+    "show": "bin/dnsever-ddns-updater show",
+    "set:id": "bin/dnsever-ddns-updater id",
+    "set:auth_code": "bin/dnsever-ddns-updater auth_code",
     "test": "node jasmineTest.js"
   },
   "bin": {
