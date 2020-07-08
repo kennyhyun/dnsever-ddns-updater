@@ -5,3 +5,4 @@ services:
     image: kennyhyun/dnsever
     volumes:
       - ~/.dnsever-ddns-updater/config.json:/root/.dnsever-ddns-updater/config.json
+    restart: unless-stopped

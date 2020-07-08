@@ -1,5 +1,6 @@
 FROM node:12-alpine
 
+RUN apk add --no-cache bind-tools
 RUN npm i -g pm2
 
 ADD package.json /var/dnsever/
